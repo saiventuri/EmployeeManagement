@@ -26,16 +26,16 @@ public class Employee {
     @Column(name = "employee_id")
     private Long id;
 
-    @Column(name = "employee_name", nullable = false)
+    @Column(name = "employee_name")
     private String name;
 
-    @Column(name = "employee_designation", nullable = false)
+    @Column(name = "employee_designation")
     private String designation;
 
-    @Column(name = "employee_department", nullable = false)
+    @Column(name = "employee_department")
     private String department;
 
-    @Column(name = "employee_date_of_joining", nullable = false)
+    @Column(name = "employee_date_of_joining")
     private Date dateOfJoining;
 
     @Column(name = "employee_salary")
@@ -45,9 +45,9 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Column(name = "employee_email", unique = true, nullable = false)
+    @Column(name = "employee_email", unique = true)
     private String email;
 
-    @Column(name = "employee_mobile_number", unique = true, nullable = false)
+    @Column(name = "employee_mobile_number", unique = true)
     private String mobileNumber;
 }
