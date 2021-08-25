@@ -1,24 +1,20 @@
 package com.example.employeemanagement.model;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.sql.Date;
+import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="employees_table")
+@Builder
+@Table(name = "employees_table")
 public class Employee {
 
     @Id
@@ -26,7 +22,7 @@ public class Employee {
     @Column(name = "employee_id")
     private Long id;
 
-    @Column(name = "employee_name")
+    @Column(name = "employee_name", nullable = false)
     private String name;
 
     @Column(name = "employee_designation")
@@ -35,8 +31,9 @@ public class Employee {
     @Column(name = "employee_department")
     private String department;
 
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "dd/MM/yyyy")
     @Column(name = "employee_date_of_joining")
-    private Date dateOfJoining;
+    private LocalDate dateOfJoining;
 
     @Column(name = "employee_salary")
     private int salary;
@@ -45,9 +42,9 @@ public class Employee {
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
-    @Column(name = "employee_email", unique = true)
+    @Column(name = "employee_email", unique = true, nullable = false)
     private String email;
 
-    @Column(name = "employee_mobile_number", unique = true)
+    @Column(name = "employee_mobile_number", unique = true, nullable = false)
     private String mobileNumber;
 }
