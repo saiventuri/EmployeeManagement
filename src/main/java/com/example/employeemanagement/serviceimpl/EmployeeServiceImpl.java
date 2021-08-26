@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -36,10 +35,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      */
     @Override
     public List<Employee> getAllEmployees() {
-        if (employeeRepository.count() > 0) {
-            return employeeRepository.findAll();
-        }
-        return new ArrayList<>();
+        return employeeRepository.findAll();
     }
 
     /**
@@ -50,7 +46,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @throws EmployeeNotFoundException if the employee with the given employee id is not found.
      */
     @Override
-    public Employee getEmployeeById(Long employeeId) throws EmployeeNotFoundException {
+    public Employee getEmployeeById(final Long employeeId) throws EmployeeNotFoundException {
         if (employeeId != null) {
             Optional<Employee> employee = employeeRepository.findById(employeeId);
             if (employee.isPresent()) {
@@ -67,7 +63,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @throws EmployeeNotFoundException if the employee with the given employee id is not found.
      */
     @Override
-    public void deleteEmployeeByID(Long employeeId) throws EmployeeNotFoundException {
+    public void deleteEmployeeByID(final Long employeeId) throws EmployeeNotFoundException {
         if (employeeId != null && employeeRepository.existsById(employeeId)) {
             employeeRepository.deleteById(employeeId);
         } else {
@@ -93,7 +89,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @throws EmployeeNotFoundException if the given employee is not found.
      */
     @Override
-    public Employee updateEmployee(Employee employee) throws EmployeeNotFoundException {
+    public Employee updateEmployee(final Employee employee) throws EmployeeNotFoundException {
         Long employeeId = employee.getId();
         if (employeeId != null) {
             Optional<Employee> employeeInstance = employeeRepository.findById(employeeId);
@@ -121,7 +117,7 @@ public class EmployeeServiceImpl implements EmployeeService {
      * @return employee that is added.
      */
     @Override
-    public Employee addEmployee(Employee employee) {
+    public Employee addEmployee(final Employee employee) {
         return employeeRepository.save(employee);
     }
 }

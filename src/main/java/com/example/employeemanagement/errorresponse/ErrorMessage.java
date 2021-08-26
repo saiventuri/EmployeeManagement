@@ -24,4 +24,9 @@ public class ErrorMessage {
      * incase of exceptions.
      */
     private String message;
+
+    /**
+     * The id of the request session.
+     */
+    private String sessionId;
 }

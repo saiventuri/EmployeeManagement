@@ -1,7 +1,9 @@
 package com.example.employeemanagement.model;
 
 /**
- * Enumeration for Gender
+ * Enumeration for Gender.
+ *
+ * @author sai praveen venturi
  */
 public enum Gender {
 
@@ -15,6 +17,9 @@ public enum Gender {
      */
     FEMALE("FEMALE");
 
+    /**
+     * The gender type.
+     */
     private final String genderType;
 
     /**
@@ -22,7 +27,8 @@ public enum Gender {
      *
      * @param genderType the gender type.
      */
-    Gender(String genderType) {
+    Gender(final String genderType) {
         this.genderType = genderType;
     }
+
 }

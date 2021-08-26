@@ -82,7 +82,7 @@ public class EmployeeDto implements Serializable {
      *
      * @param employee the employee used to initialize this object instance.
      */
-    public EmployeeDto(Employee employee) {
+    public EmployeeDto(final Employee employee) {
         this.id = employee.getId();
         this.name = employee.getName();
         this.department = employee.getDepartment();
