@@ -4,6 +4,7 @@ import com.example.employeemanagement.controller.EmployeeController;
 import com.example.employeemanagement.dto.EmployeeDto;
 import com.example.employeemanagement.exceptions.EmployeeNotFoundException;
 import com.example.employeemanagement.service.EmployeeService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +19,7 @@ import java.util.stream.Collectors;
  * @see com.example.employeemanagement.controller.EmployeeController
  */
 @RestController
+@Api(tags = {"Employee Service"})
 public class EmployeeControllerImpl implements EmployeeController {
     /**
      * The employee service.
@@ -60,7 +62,7 @@ public class EmployeeControllerImpl implements EmployeeController {
      * @throws EmployeeNotFoundException if employee with given id does not exist.
      */
     @Override
-    public EmployeeDto getAllEmployeeById(final Long employeeId) throws EmployeeNotFoundException {
+    public EmployeeDto getEmployeeById(final Long employeeId) throws EmployeeNotFoundException {
         return new EmployeeDto(employeeService.getEmployeeById(employeeId));
     }
 

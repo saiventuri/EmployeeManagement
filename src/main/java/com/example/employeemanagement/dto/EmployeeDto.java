@@ -3,6 +3,8 @@ package com.example.employeemanagement.dto;
 import com.example.employeemanagement.model.Employee;
 import com.example.employeemanagement.model.Gender;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -21,6 +23,7 @@ import java.time.LocalDate;
  */
 @Data
 @NoArgsConstructor
+@ApiModel(value = "Employee", description = "The model replicating the attributes of an employee")
 public class EmployeeDto implements Serializable {
 
     /**
@@ -49,6 +52,7 @@ public class EmployeeDto implements Serializable {
     /**
      * Date of joining of the Employee.
      */
+    @ApiModelProperty(example = "20/07/2021")
     @JsonFormat(pattern = "dd/MM/yyyy")
     @DateTimeFormat(iso = DateTimeFormat.ISO.DATE, pattern = "dd/MM/yyyy")
     @NotNull(message = "Employee date of joining is mandatory")
@@ -62,6 +66,7 @@ public class EmployeeDto implements Serializable {
     /**
      * Gender of the Employee.
      */
+    @ApiModelProperty(example = "MALE")
     private Gender gender;
 
     /**
