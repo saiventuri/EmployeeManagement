@@ -78,7 +78,7 @@ public interface EmployeeController {
                     response = EmployeeDto.class),
             @ApiResponse(code = 404, message = "Employee not found",
                     response = ErrorMessage.class)})
-    EmployeeDto getEmployeeById(@ApiParam(name = "Employee Id", value = "Id of the employee to retrieve", required = true) @PathVariable("id") Long employeeId) throws EmployeeNotFoundException;
+    EmployeeDto getEmployeeById(@ApiParam(name = "Employee Id", value = "Id of the employee to retrieve", example = "123", required = true) @PathVariable("id") Long employeeId) throws EmployeeNotFoundException;
 
     /**
      * Handler method for put request from the rest client

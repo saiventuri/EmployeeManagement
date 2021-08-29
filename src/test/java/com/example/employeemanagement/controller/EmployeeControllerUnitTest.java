@@ -13,7 +13,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -33,15 +34,20 @@ import java.util.Collections;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-@WebMvcTest(EmployeeController.class)
+
+@SpringBootTest
+@AutoConfigureMockMvc(addFilters = false)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 class EmployeeControllerUnitTest {
 
     private final String URI = "/api/employees";
+
     @Autowired
     private MockMvc mockMvc;
+
     @MockBean
     private EmployeeService employeeService;
+
     @Autowired
     private ObjectMapper objectMapper;
 
